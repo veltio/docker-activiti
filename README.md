@@ -35,7 +35,7 @@ Alternately you can build the image yourself.
 ```bash
 git clone https://github.com/eternnoir/activiti.git
 cd activiti
-docker build --tag="$USER/activiti" .
+docker build --tag="veltio/activiti" .
 ```
 
 # Quickstart
