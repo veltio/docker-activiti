@@ -2,13 +2,13 @@
 # Ubuntu 14.04 with activiti Dockerfile
 #
 # Pull base image.
-FROM dockerfile/java
-MAINTAINER Frank Wang "eternnoir@gmail.com"
+FROM java:7
+MAINTAINER Gleison Silva "geison.silva@gmail.com"
 
 EXPOSE 8080
 
 ENV TOMCAT_VERSION 8.0.14
-ENV ACTIVITI_VERSION 5.16.4
+ENV ACTIVITI_VERSION 5.19.0
 ENV MYSQL_CONNECTOR_JAVA_VERSION 5.1.33
 
 RUN wget http://archive.apache.org/dist/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/catalina.tar.gz
