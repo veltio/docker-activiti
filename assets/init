@@ -16,6 +16,24 @@ DB_NAME=${DB_NAME:-}
 DB_USER=${DB_USER:-}
 DB_PASS=${DB_PASS:-}
 
+# smtp configuration
+MAIL_SERVER_HOST=${MAIL_SERVER_HOST:-}
+MAIL_SERVER_PORT=${MAIL_SERVER_PORT:-}
+MAIL_SERVER_USERNAME=${MAIL_SERVER_USERNAME:-}
+MAIL_SERVER_PASSWORD=${MAIL_SERVER_PASSWORD:-}
+
+sed 's/{{MAIL_SERVER_HOST}}/'"${MAIL_SERVER_HOST}"'/g' -i /assets/config/activiti-custom-context.xml
+sed 's/{{MAIL_SERVER_PORT}}/'"${MAIL_SERVER_PORT}"'/g' -i /assets/config/activiti-custom-context.xml
+sed 's/{{MAIL_SERVER_USERNAME}}/'"${MAIL_SERVER_USERNAME}"'/g' -i /assets/config/activiti-custom-context.xml
+sed 's/{{MAIL_SERVER_PASSWORD}}/'"${MAIL_SERVER_PASSWORD}"'/g' -i /assets/config/activiti-custom-context.xml
+cp -f /assets/config/activiti-custom-context.xml /opt/tomcat/webapps/activiti-rest/WEB-INF/classes
+cp -f /assets/config/activiti-custom-context.xml /opt/tomcat/webapps/activiti-explorer/WEB-INF/classes
+# end smtp configuration
+
+# copy groovy to rest app
+cp /opt/tomcat/webapps/activiti-explorer/WEB-INF/lib/groovy*.jar \
+   /opt/tomcat/webapps/activiti-rest/WEB-INF/lib/
+
 # is a mysql database linked?
 # requires that the mysql container have exposed
 # port 3306 and respectively.
